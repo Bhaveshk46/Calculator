@@ -1,0 +1,29 @@
+.calculator{
+    display: flex;
+    width: 280px;
+    flex-wrap: wrap;
+
+}
+.buttons{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.display{
+    background-color: black;
+    height: 80px;
+    width: 250px;
+    flex-shrink: 0;
+}
+
+button{
+    height: 60px;
+    width: 60px;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      height: 100vh;
+}
