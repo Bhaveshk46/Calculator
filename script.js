@@ -77,11 +77,26 @@ signs.forEach(sign => {
 
 
 backspace.addEventListener("click", () => {
-    dispText = dispText.slice(0, -1)
+
+    let deletedChar = dispText.slice(-1);
+    dispText = dispText.slice(0, -1);
+
+    if (deletedChar === ".") {
+    decimalUsed = false;
+}
+    if (deletedChar === operator) {
+        operator = "";
+        signUsed= false;
+    }
+    else if (operator !== "") {
+        num2 = num2.slice(0, -1);
+    }
+    else {
+        num1 = num1.slice(0, -1);
+    }
+
     display.textContent = dispText;
-    decimalUsed=false;
-    signUsed = false;
-})
+});
 
 reset.addEventListener("click", () => {
     display.textContent = "";
