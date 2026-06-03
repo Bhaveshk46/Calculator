@@ -194,3 +194,45 @@ equal.addEventListener("click", () => {
         resultDisplayed = true;
     }
 })
+
+//keyBoard support
+document.addEventListener("keydown", (event) => {
+
+    const key = event.key;
+
+    // Numbers
+    if (key >= "0" && key <= "9") {
+        numbers.forEach(number => {
+            if (number.textContent === key) {
+                number.click();
+            }
+        });
+    }
+
+    // Operators
+    signs.forEach(sign => {
+        if (sign.textContent === key) {
+            sign.click();
+        }
+    });
+
+    // Decimal
+    if (key === ".") {
+        decimal.click();
+    }
+
+    // Equals
+    if (key === "Enter" || key === "=") {
+        equal.click();
+    }
+
+    // Delete
+    if (key === "Backspace") {
+        backspace.click();
+    }
+
+    // Clear
+    if (key === "Escape") {
+        reset.click();
+    }
+});
