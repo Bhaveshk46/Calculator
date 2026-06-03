@@ -1,7 +1,12 @@
 const add = (a, b) => { return a + b };
 const subtract = (a, b) => { return a - b };
 const multiply = (a, b) => { return a * b };
-const divide = (a, b) => { return a / b };
+const divide = (a, b) => { 
+    if(b==0){
+        return "0 is not valid divisor!"
+    }
+    else{
+    return a / b };};
 const percent = (a) => { return a / 100 };
 console.log(add(4, 5));
 
@@ -43,21 +48,36 @@ const display = document.querySelector(".display")
 let dispText = "";
 let decimalUsed = false;
 let signUsed = false;
+let resultDisplayed = false;
 
 //logic for clicking and printing the respective
 numbers.forEach(number => {
     number.addEventListener("click", () => {
-        if(operator===""){
-            num1+=number.textContent;
+
+        if(resultDisplayed){
+            display.textContent = "";
+
+            num1 = "";
+            num2 = "";
+            operator = "";
+            dispText = "";
+
+            decimalUsed = false;
+            signUsed = false;
+
+            resultDisplayed = false;
         }
 
+        if(operator === ""){
+            num1 += number.textContent;
+        }
         else{
-            num2+= number.textContent;
+            num2 += number.textContent;
         }
 
         display.textContent += number.textContent;
         dispText += number.textContent;
-        signUsed= false;
+        signUsed = false;
     });
 });
 
@@ -132,7 +152,8 @@ equal.addEventListener("click", () => {
     }
 
     let result = operate(Number(num1),Number(num2),operator);
-        
+    result = Number(result.toFixed(2));
+
     display.textContent = result;
 
     num1 = result.toString();
@@ -143,4 +164,6 @@ equal.addEventListener("click", () => {
 
     signUsed = false;
     decimalUsed = num1.includes(".");
+
+    resultDisplayed = true;
 })
